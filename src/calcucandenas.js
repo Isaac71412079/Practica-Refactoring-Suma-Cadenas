@@ -1,8 +1,11 @@
-function calculadora(chain) {
+function determinarDelimitador(chain){
+  return chain.match(/^\/\/\[(.)\]/);
+}
+function calcular(chain) {
   let delimiters = [',', '-', /[,|-]/];
   let numbers = chain;
   let acc = 0;
-  const delimiterMatch = chain.match(/^\/\/\[(.)\]/);
+  const delimiterMatch = determinarDelimitador(chain);
 
   if(delimiterMatch){
     const delimiter = delimiterMatch[1];
@@ -26,5 +29,4 @@ function calculadora(chain) {
   
   return Number(numbers[0]);
 }
-
-export default calculadora;
+export default calcular;
